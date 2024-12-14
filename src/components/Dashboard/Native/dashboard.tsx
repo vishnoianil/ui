@@ -26,6 +26,7 @@ import { Content } from '@patternfly/react-core/dist/esm/components/Content/Cont
 import { Popover } from '@patternfly/react-core/dist/esm/components/Popover/Popover';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons/dist/esm/icons/external-link-alt-icon';
 import { OutlinedQuestionCircleIcon } from '@patternfly/react-icons/dist/esm/icons/outlined-question-circle-icon';
+import { Bullseye } from '@patternfly/react-core';
 
 const InstructLabLogo: React.FC = () => <Image src="/InstructLab-LogoFile-RGB-FullColor.svg" alt="InstructLab Logo" width={256} height={256} />;
 
@@ -401,7 +402,7 @@ const DashboardNative: React.FunctionComponent = () => {
           onClose={() => setIsPublishModalOpen(false)}
           actions={[
             <Button key="confirm" variant="primary" onClick={() => handlePublishContributionConfirm()}>
-              Publish
+              Publish {'  '}
               {isPublishing && <Spinner isInline aria-label="Publishing contribution" />}
             </Button>,
             <Button key="cancel" variant="secondary" onClick={() => handlePublishContributionCancel()}>
@@ -411,6 +412,7 @@ const DashboardNative: React.FunctionComponent = () => {
         >
           <p>are you sure you want to publish contribution to remote taxonomy repository present at : {taxonomyRepoDir}?</p>
         </Modal>
+
       </PageSection>
     </div>
   );
