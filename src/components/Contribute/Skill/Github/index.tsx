@@ -167,18 +167,27 @@ export const SkillFormGithub: React.FunctionComponent<SkillFormProps> = ({ skill
   };
 
   const validateQuestion = (question: string): ValidatedOptions => {
-    if (question.length > 0 && question.length < 250) {
-      setDisableAction(!checkSkillFormCompletion(skillFormData));
-      return ValidatedOptions.success;
+    const questionStr = question.trim();
+    if (questionStr.length != 0) {
+      const tokens = questionStr.split(/\s+/);
+
+      if (tokens.length > 0 && tokens.length < 250) {
+        setDisableAction(!checkSkillFormCompletion(skillFormData, true));
+        return ValidatedOptions.success;
+      }
     }
     setDisableAction(true);
     return ValidatedOptions.error;
   };
 
   const validateAnswer = (answer: string): ValidatedOptions => {
-    if (answer.length > 0 && answer.length < 250) {
-      setDisableAction(!checkSkillFormCompletion(skillFormData));
-      return ValidatedOptions.success;
+    const answerStr = answer.trim();
+    if (answerStr.length != 0) {
+      const tokens = answerStr.split(/\s+/);
+      if (tokens.length > 0 && tokens.length < 250) {
+        setDisableAction(!checkSkillFormCompletion(skillFormData, true));
+        return ValidatedOptions.success;
+      }
     }
     setDisableAction(true);
     return ValidatedOptions.error;
